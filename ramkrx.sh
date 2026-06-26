@@ -130,7 +130,7 @@ start() {
 
   local wallet; wallet="$(get_wallet)"
   tmux new-session -d -s "$SESSION" \
-    "cd $DIR && LD_LIBRARY_PATH=$LDPATH ./keryx-miner -s $NODE -p $PORT -a $wallet --light --cpu-inference 2>&1 | tee -a $DIR/miner.log"
+    "cd $DIR && LD_LIBRARY_PATH=$LDPATH ./keryx-miner --keryxd-address $NODE --port $PORT --mining-address $wallet --light 2>&1 | tee -a $DIR/miner.log"
 
   echo
   echo "Mining started in tmux session '$SESSION' ($MINER_VER, OPTIMIZED kernel)."
